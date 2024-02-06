@@ -22,6 +22,19 @@ function App() {
             description: "React documentation and tutorial", 
         }, 
     ]);
+
+    function addItem(date, link, description, priority) {
+        setParkingLotItems(oldItems => [
+            ...oldItems, 
+            {
+                id: nanoid(),
+                date,
+                link,
+                description,
+                priority,
+            }
+        ]);
+    }
     
 
     return (
@@ -31,7 +44,7 @@ function App() {
                 <p>Send most of your browser tabs into retirement.</p>
             </header>
             <main>
-                <ParkingLotForm />
+                <ParkingLotForm addItem={addItem} />
                 <ParkingLotList parkingLotItems={parkingLotItems} />
             </main>
         </div>
